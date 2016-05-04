@@ -21,6 +21,7 @@ typedef struct		s_printf
 */
 
 void				flush(char *str, t_printf *p, bool should_free);
+void				init_p_struct(t_printf *p);
 int					ft_printf(char *str, ...);
 
 /*
@@ -30,10 +31,15 @@ int					ft_printf(char *str, ...);
 char				*process(char *str, t_printf *p);
 
 /*
-**	check.c
+**	parse.c
 */
 
 int					parse(char *str, t_printf *p);
 
+/*
+**	get_things.c
+*/
+
+int			get_width(char *str);
 
 #endif

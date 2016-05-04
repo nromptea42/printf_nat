@@ -79,7 +79,8 @@ SRC = $(SRC_D)ft_atoi.c \
 	$(SRC_D)get_next_line.c \
 	$(SRC_D)p_printf.c \
 	$(SRC_D)p_process.c \
-	$(SRC_D)p_parse.c
+	$(SRC_D)p_parse.c \
+	$(SRC_D)p_get_things.c
 
 OBJ_D = .obj/
 OBJ = $(SRC:$(SRC_D)%.c=$(OBJ_D)%.o)

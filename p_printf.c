@@ -8,17 +8,24 @@ void			flush(char *str, t_printf *p, bool should_free)
 		ft_strdel(&str);
 }
 
-int				ft_printf(char *str, ...)
+void			init_struct_p(t_printf *p)
+{
+	p->ret = 0;
+	p->converter = '\0';
+	p->width = 0;
+}
+
+int			ft_printf(char *str, ...)
 {
 	t_printf	p;
 	int			i;
 
-	p.ret = 0;
+	init_struct_p(&p);
 	va_start(p.ap, str);
 	i = 0;
 	while (*str != '\0')
 	{
-		while (str[i] != '%' && str[i])
+		while (str[i] && str[i] != '%')
 			i++;
 		flush(ft_strsub(str, 0, i), &p, true);
 		str += i;
