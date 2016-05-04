@@ -99,10 +99,14 @@ clean :
 	@/bin/rm -rf $(OBJ_D);
 
 fclean : clean
-	@rm printf_test
+	@rm -f printf_test
 	@/bin/rm -rf $(NAME);
 
 re : fclean all
 
 test : all
 	@gcc p_printf_test.c $(NAME) -o printf_test
+gcp : fclean
+	git add -A
+	git commit -m ok
+	git push origin master
