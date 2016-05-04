@@ -14,7 +14,7 @@ int		main(void)
 {
 	int	i;
 
-	i = ft_printf("|%12d|\n", 8);
+	i = ft_printf("|%4d|%4d|%4d|\n", 123, 456, 789);
 	printf("%d\n", i);
 	return (0);
 }

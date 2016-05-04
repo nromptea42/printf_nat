@@ -3,7 +3,7 @@
 static bool		isWidth(char c)
 {
 	// un nombre ne commençant pas par zéro
-	if (c >= '0' && c <= '9')
+	if (c > '0' && c <= '9')
 		return (true);
 	return (false);
 }
@@ -55,13 +55,11 @@ int				parse(char *str, t_printf *p)
 		else if (isFlag(str[i]))
 			(void)str;
 		else if (isWidth(str[i]))
-			p->width = get_width(str + i);
+			i = get_width(str + i, p);
 		else if (isPrecision(str[i]))
 			(void)str;
 		else if (isModifier(str[i]))
 			(void)str;
-		else
-			return (0);
 		i++;
 	}
 	return (0);

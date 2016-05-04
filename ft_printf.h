@@ -40,6 +40,6 @@ int					parse(char *str, t_printf *p);
 **	get_things.c
 */
 
-int			get_width(char *str);
+int			get_width(char *str, t_printf *p);
 
 #endif

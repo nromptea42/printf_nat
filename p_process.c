@@ -27,5 +27,6 @@ char			*process(char *str, t_printf *p)
 		block_size = 0;
 		flush("%", p, false);
 	}
+	//ft_putnbr(block_size);
 	return (str + block_size);
 }
