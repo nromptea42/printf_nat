@@ -11,7 +11,10 @@ static bool		isWidth(char c)
 static bool		isPrecision(char c)
 {
 	// .xx
-	(void)c;
+	if (c == '.')
+{
+		return (true);
+}
 	return (false);
 }
 
@@ -29,10 +32,10 @@ static bool		isModifier(char c)
 	return (false);
 }
 
-static bool		isConverter(char c)
+bool		isConverter(char c)
 {
 	//"sSpdDioOuUxXcC"
-	char	converters[] = "sdicxXoOuU%";
+	char	converters[] = "sdicxXoOuU";
 
 	if (ft_strchr(converters, c))
 		return (true);
@@ -57,9 +60,11 @@ int				parse(char *str, t_printf *p)
 		else if (isWidth(str[i]))
 			i = get_width(str + i, p);
 		else if (isPrecision(str[i]))
-			(void)str;
+			i = get_precision(str + i, p); 
 		else if (isModifier(str[i]))
 			(void)str;
+		else
+			return (0);
 		i++;
 	}
 	return (0);

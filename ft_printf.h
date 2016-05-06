@@ -14,6 +14,7 @@ typedef struct		s_printf
 	va_list			ap;
 	char			converter;
 	int				width;
+	int				precision;
 }					t_printf;
 
 /*
@@ -34,6 +35,7 @@ char				*process(char *str, t_printf *p);
 **	parse.c
 */
 
+bool					isConverter(char c);
 int					parse(char *str, t_printf *p);
 
 /*
@@ -41,5 +43,6 @@ int					parse(char *str, t_printf *p);
 */
 
 int			get_width(char *str, t_printf *p);
+int			get_precision(char *str, t_printf *p);
 
 #endif
