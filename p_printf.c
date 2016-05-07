@@ -9,16 +9,17 @@ void			flush(char *str, t_printf *p, bool should_free)
 	char	*tmp2;
 	char	*str2;
 	int	i;
-	bool	free;
+	bool	fr;
 
 	i = 0;
 	len = ft_strlen(str);
+	fr = false;
 	if (p->converter == 's' && p->precision < len)
 	{
 		str2 = ft_strsub(str, 0, p->precision);
 		str = str2;
 		len = ft_strlen(str);
-		free = true;
+		fr = true;
 	}
 	if (isConverter(p->converter))
 	{
@@ -50,8 +51,8 @@ void			flush(char *str, t_printf *p, bool should_free)
 	}
 	if (should_free == true)
 		ft_strdel(&str);
-	if (free == true)
-	//	ft_strdel(&str2);
+	if(fr == true)
+		ft_strdel(&str2);
 	p->width = 0;
 	p->converter = '?';
 }
