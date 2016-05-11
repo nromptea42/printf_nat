@@ -58,9 +58,15 @@ int				parse(char *str, t_printf *p)
 		else if (isFlag(str[i]))
 			(void)str;
 		else if (isWidth(str[i]))
-			i = get_width(str + i, p);
+		{
+			i = i + get_width(str + i, p);
+			//ft_putnbr(p->width);
+		}
 		else if (isPrecision(str[i]))
-			i = get_precision(str + i, p); 
+		{
+			i = i + get_precision(str + i, p);
+			//ft_putnbr(p->precision);
+		}
 		else if (isModifier(str[i]))
 			(void)str;
 		else

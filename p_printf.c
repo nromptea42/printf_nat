@@ -14,13 +14,13 @@ void			flush(char *str, t_printf *p, bool should_free)
 	i = 0;
 	len = ft_strlen(str);
 	fr = false;
-	if (p->converter == 's' && p->precision < len)
+/*	if (p->converter == 's' && p->precision < len)
 	{
 		str2 = ft_strsub(str, 0, p->precision);
 		str = str2;
 		len = ft_strlen(str);
 		fr = true;
-	}
+	}*/
 	if (isConverter(p->converter))
 	{
 		if (p->width > len)
