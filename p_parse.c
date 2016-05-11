@@ -35,7 +35,7 @@ static bool		isModifier(char c)
 bool		isConverter(char c)
 {
 	//"sSpdDioOuUxXcC"
-	char	converters[] = "sdicxXoOuU";
+	char	converters[] = "sdicxXoOuU%";
 
 	if (ft_strchr(converters, c))
 		return (true);
