@@ -12,15 +12,13 @@ static bool		isPrecision(char c)
 {
 	// .xx
 	if (c == '.')
-{
 		return (true);
-}
 	return (false);
 }
 
 static bool		isFlag(char c)
 {
-	// "#0-+ "
+	// '#' '0' '-' '+' ' '
 	(void)c;
 	return (false);
 }
@@ -28,7 +26,8 @@ static bool		isFlag(char c)
 static bool		isModifier(char c)
 {
 	// h ; hh ; l ; ll ; j ; z
-	(void)c;
+	if (c == 'h' || c == 'l' || c == 'j' || c == 'z')
+		return (true);
 	return (false);
 }
 
@@ -72,7 +71,6 @@ int				parse(char *str, t_printf *p)
 			(void)str;
 		else
 			return (0);
-		i++;
 	}
 	return (0);
 }

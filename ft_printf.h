@@ -6,7 +6,7 @@
 /*   By: nromptea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/11 15:50:43 by nromptea          #+#    #+#             */
-/*   Updated: 2016/05/11 18:28:51 by nromptea         ###   ########.fr       */
+/*   Updated: 2016/05/12 17:40:00 by nromptea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,16 @@ typedef int			bool;
 # define true 1
 # define false 0
 
+typedef struct		s_mod
+{
+	bool			h;
+	bool			hh;
+	bool			l;
+	bool			ll;
+	bool			j;
+	bool			z;
+}					t_mod;
+
 typedef struct		s_printf
 {
 	int				ret;
@@ -27,7 +37,9 @@ typedef struct		s_printf
 	char			converter;
 	int				width;
 	int				precision;
+	t_mod			mods;
 }					t_printf;
+
 
 /*
 **	ft_printf.c
@@ -56,5 +68,6 @@ int					parse(char *str, t_printf *p);
 
 int			get_width(char *str, t_printf *p);
 int			get_precision(char *str, t_printf *p);
+int			get_modifier(char *str, t_printf *p);
 
 #endif

@@ -50,8 +50,9 @@ void			flush(char *str, t_printf *p, bool should_free)
 	len = ft_strlen(str);
 	if (isConverter(p->converter))
 	{
-		ft_putstr("hello");
-		str = make_precision(str, p, len, should_free);
+		if (p->precision != -1)
+			str = make_precision(str, p, len, should_free);
+		len = ft_strlen(str);
 		if (p->width > len)
 		{
 			tmp2 = ft_strnew(p->width);
@@ -80,6 +81,7 @@ void			flush(char *str, t_printf *p, bool should_free)
 	}
 	if (should_free == true)
 		ft_strdel(&str);
+	p->precision = -1;
 	p->width = 0;
 	p->converter = '?';
 }
@@ -89,7 +91,13 @@ void			init_struct_p(t_printf *p)
 	p->ret = 0;
 	p->converter = '?';
 	p->width = 0;
-	p->precision = 0;
+	p->precision = -1;
+	p->mods.h = false;
+	p->mods.hh = false;
+	p->mods.l = false;
+	p->mods.ll = false;
+	p->mods.j = false;
+	p->mods.z = false;
 }
 
 int			ft_printf(char *str, ...)
