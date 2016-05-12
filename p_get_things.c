@@ -22,8 +22,10 @@ int	get_precision(char *str, t_printf *p)
 
 	p->precision = 0;
 	i = 1;
-	if (str[i] == '-')
+	if (str[i] == '-' || (str[i] < '0' && str[i] > '9'))
 	{
+		if (str[i] == '-')
+			i++;
 		while (str[i] >= '0' && str[i] <= '9')
 			i++;
 		return (i);

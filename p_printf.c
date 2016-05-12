@@ -2,27 +2,56 @@
 
 #include <stdio.h>
 
-void			flush(char *str, t_printf *p, bool should_free)
+char			*make_precision(char *str, t_printf *p, int len, bool should_free)
 {
-	int	len;
 	char	*tmp;
 	char	*tmp2;
-	char	*str2;
-	int	i;
-	bool	fr;
+	int		i;
+	
+	i = 0;
+	if (p->converter == 's')
+	{
+		if (p->precision >= len)
+			return (str);
+		tmp = ft_strsub(str, 0, p->precision);
+		if (should_free == true)
+			ft_strdel(&str);
+		str = tmp;
+		return (str);
+	}
+	else
+	{
+		if (p->precision <= len)
+			return (str);
+		tmp2 = ft_strnew(p->precision);
+		tmp = tmp2;
+		while (i < p->precision - len)
+		{
+			*tmp = '0';
+			tmp++;
+			i++;
+		}
+		tmp = ft_strcpy(tmp, str);
+		if (should_free == true)
+			ft_strdel(&str);
+		str = tmp2;
+		return (str);
+	}
+}
+
+void			flush(char *str, t_printf *p, bool should_free)
+{
+	int		len;
+	char	*tmp;
+	char	*tmp2;
+	int		i;
 
 	i = 0;
 	len = ft_strlen(str);
-	fr = false;
-/*	if (p->converter == 's' && p->precision < len)
-	{
-		str2 = ft_strsub(str, 0, p->precision);
-		str = str2;
-		len = ft_strlen(str);
-		fr = true;
-	}*/
 	if (isConverter(p->converter))
 	{
+		ft_putstr("hello");
+		str = make_precision(str, p, len, should_free);
 		if (p->width > len)
 		{
 			tmp2 = ft_strnew(p->width);
@@ -51,8 +80,6 @@ void			flush(char *str, t_printf *p, bool should_free)
 	}
 	if (should_free == true)
 		ft_strdel(&str);
-	if(fr == true)
-		ft_strdel(&str2);
 	p->width = 0;
 	p->converter = '?';
 }

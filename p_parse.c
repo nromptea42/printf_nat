@@ -53,6 +53,7 @@ int				parse(char *str, t_printf *p)
 		if (isConverter(str[i]))
 		{
 			p->converter = str[i];
+			//ft_putchar(p->converter);
 			return (i + 1);
 		}	
 		else if (isFlag(str[i]))
