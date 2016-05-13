@@ -81,14 +81,11 @@ void			flush(char *str, t_printf *p, bool should_free)
 	}
 	if (should_free == true)
 		ft_strdel(&str);
-	p->precision = -1;
-	p->width = 0;
-	p->converter = '?';
+	init_struct(p);
 }
 
-void			init_struct_p(t_printf *p)
+void			init_struct(t_printf *p)
 {
-	p->ret = 0;
 	p->converter = '?';
 	p->width = 0;
 	p->precision = -1;
@@ -105,9 +102,10 @@ int			ft_printf(char *str, ...)
 	t_printf	p;
 	int			i;
 
-	init_struct_p(&p);
+	init_struct(&p);
 	va_start(p.ap, str);
 	i = 0;
+	p.ret = 0;
 	while (*str != '\0')
 	{
 		while (str[i] && str[i] != '%')

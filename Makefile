@@ -60,6 +60,8 @@ SRC = $(SRC_D)ft_atoi.c \
 	$(SRC_D)ft_strtrim.c \
 	$(SRC_D)ft_itoa.c \
 	$(SRC_D)ft_itoa_base.c \
+	$(SRC_D)ft_long_itoa_base.c \
+	$(SRC_D)ft_long_long_itoa_base.c \
 	$(SRC_D)ft_strsplit.c \
 	$(SRC_D)ft_lstnew.c \
 	$(SRC_D)ft_lstdelone.c \

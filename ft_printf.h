@@ -6,7 +6,7 @@
 /*   By: nromptea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/11 15:50:43 by nromptea          #+#    #+#             */
-/*   Updated: 2016/05/12 17:40:00 by nromptea         ###   ########.fr       */
+/*   Updated: 2016/05/13 17:37:25 by nromptea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,9 @@ typedef struct		s_printf
 **	ft_printf.c
 */
 
+char				*make_precision(char *str, t_printf *p, int len, bool should_free);
 void				flush(char *str, t_printf *p, bool should_free);
-void				init_p_struct(t_printf *p);
+void				init_struct(t_printf *p);
 int					ft_printf(char *str, ...);
 
 /*

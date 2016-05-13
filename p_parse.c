@@ -42,6 +42,18 @@ bool		isConverter(char c)
 		return (false);
 }
 
+#include <stdio.h>
+
+void	debug(t_printf *p)
+{
+	printf("h = %d\n", p->mods.h);
+	printf("hh = %d\n", p->mods.hh);
+	printf("l = %d\n", p->mods.l);
+	printf("ll = %d\n", p->mods.ll);
+	printf("j = %d\n", p->mods.j);
+	printf("z = %d\n", p->mods.z);
+}
+
 int				parse(char *str, t_printf *p)
 {
 	int		i;
@@ -68,7 +80,10 @@ int				parse(char *str, t_printf *p)
 			//ft_putnbr(p->precision);
 		}
 		else if (isModifier(str[i]))
-			(void)str;
+		{
+			i = i + get_modifier(str + i, p);
+			//debug(p);
+		}
 		else
 			return (0);
 	}

@@ -9,7 +9,7 @@ char			*process(char *str, t_printf *p)
 	if (p->converter == 's')
 		flush(va_arg(p->ap, char *), p, false);
 	else if (p->converter == 'd' || p->converter == 'i' || p->converter == 'u' || p->converter == 'U')
-		flush(ft_itoa(va_arg(p->ap, int)), p, true);
+		flush(ft_long_long_itoa_base(va_arg(p->ap, long long int), 10), p, true);
 	else if (p->converter == '%')
 		flush("%", p, false);
 	else if (p->converter == 'c')

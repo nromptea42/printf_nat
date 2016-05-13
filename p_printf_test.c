@@ -14,9 +14,9 @@ int		main(void)
 {
 	int	i;
 
-	i = ft_printf("|%2.s|\n", "bonjour");
+	i = ft_printf("|%d|\n", 123456789123);
 	printf("%d\n", i);
-	i = printf("|%2.s|\n", "bonjour");
+	i = printf("|%ld|\n", 123456789123);
 	printf("%d\n", i);
 	return (0);
 }
