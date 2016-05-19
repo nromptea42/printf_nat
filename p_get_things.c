@@ -70,3 +70,25 @@ int	get_modifier(char *str, t_printf *p)
 		p->mods.z = true;
 	return (i);
 }
+
+int	get_flags(char *str, t_printf *p)
+{
+	int		i;
+
+	i = 0;
+	while (str[i] == '#' || str[i] == '0' || str[i] == '-' || str[i] == '+' || str[i] == ' ')
+	{
+		if (str[i] == '#')
+			p->flags.diese = true;
+		if (str[i] == '0')
+			p->flags.zero = true;
+		if (str[i] == '-')
+			p->flags.moins = true;
+		if (str[i] == '+')
+			p->flags.plus = true;
+		if (str[i] == ' ')
+			p->flags.space = true;
+		i++;
+	}
+	return (i);
+}

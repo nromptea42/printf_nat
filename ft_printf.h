@@ -6,7 +6,7 @@
 /*   By: nromptea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/11 15:50:43 by nromptea          #+#    #+#             */
-/*   Updated: 2016/05/13 17:37:25 by nromptea         ###   ########.fr       */
+/*   Updated: 2016/05/19 21:33:32 by nromptea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,15 @@ typedef struct		s_mod
 	bool			z;
 }					t_mod;
 
+typedef struct		s_flag
+{
+	bool			diese;
+	bool			zero;
+	bool			moins;
+	bool			plus;
+	bool			space;
+}					t_flag;
+
 typedef struct		s_printf
 {
 	int				ret;
@@ -38,6 +47,7 @@ typedef struct		s_printf
 	int				width;
 	int				precision;
 	t_mod			mods;
+	t_flag			flags;
 }					t_printf;
 
 
@@ -70,5 +80,6 @@ int					parse(char *str, t_printf *p);
 int			get_width(char *str, t_printf *p);
 int			get_precision(char *str, t_printf *p);
 int			get_modifier(char *str, t_printf *p);
+int			get_flags(char *str, t_printf *p);
 
 #endif

@@ -19,7 +19,8 @@ static bool		isPrecision(char c)
 static bool		isFlag(char c)
 {
 	// '#' '0' '-' '+' ' '
-	(void)c;
+	if (c == '#' || c == '0' || c == '-' || c == '+' || c == ' ')
+		return (true);
 	return (false);
 }
 
@@ -34,7 +35,7 @@ static bool		isModifier(char c)
 bool		isConverter(char c)
 {
 	//"sSpdDioOuUxXcC"
-	char	converters[] = "sdicxXoOuU%";
+	char	converters[] = "sSdDicCxXoOuU%";
 
 	if (ft_strchr(converters, c))
 		return (true);
@@ -54,6 +55,15 @@ void	debug(t_printf *p)
 	printf("z = %d\n", p->mods.z);
 }
 
+void	debug2(t_printf *p)
+{
+	printf("diese = %d\n", p->flags.diese);
+	printf("zero = %d\n", p->flags.zero);
+	printf("moins = %d\n", p->flags.moins);
+	printf("plus = %d\n", p->flags.plus);
+	printf("space = %d\n", p->flags.space);
+}
+
 int				parse(char *str, t_printf *p)
 {
 	int		i;
@@ -68,7 +78,10 @@ int				parse(char *str, t_printf *p)
 			return (i + 1);
 		}	
 		else if (isFlag(str[i]))
-			(void)str;
+		{
+			i = i + get_flags(str + i, p);
+			//debug2(p);
+		}
 		else if (isWidth(str[i]))
 		{
 			i = i + get_width(str + i, p);
