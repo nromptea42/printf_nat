@@ -6,7 +6,7 @@
 /*   By: gsaynac <gsaynac@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/20 20:19:07 by gsaynac           #+#    #+#             */
-/*   Updated: 2016/05/13 18:35:48 by nromptea         ###   ########.fr       */
+/*   Updated: 2016/05/19 16:52:55 by nromptea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int				ft_toupper(int c);
 char			*ft_itoa(int n);
 char			*ft_itoa_base(int n, int base);
 char			*ft_long_itoa_base(long int n, int base);
-char			*ft_long_long_itoa_base(long long int n, int base);
+char			*ft_long_long_itoa_base(unsigned long long int n, int base);
 void			*ft_memalloc(size_t size);
 void			ft_memdel(void **ap);
 void			ft_putchar(char c);

@@ -42,7 +42,7 @@ bool		isConverter(char c)
 		return (false);
 }
 
-#include <stdio.h>
+#include <stdio.h> //oui
 
 void	debug(t_printf *p)
 {

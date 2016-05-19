@@ -6,22 +6,22 @@
 /*   By: nromptea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/29 19:33:20 by nromptea          #+#    #+#             */
-/*   Updated: 2016/05/13 18:37:35 by nromptea         ###   ########.fr       */
+/*   Updated: 2016/05/19 16:53:44 by nromptea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	*itoa_rec(long long n, char *res, int base)
+static char	*itoa_rec(unsigned long long n, char *res, int base)
 {
-	if (n >= base)
+	if (n >= (unsigned long long)base)
 		res = itoa_rec(n / base, res, base);
 	*res = "0123456789ABCDEF"[n % base];
 	*(res + 1) = '\0';
 	return (res + 1);
 }
 
-char		*ft_long_long_itoa_base(long long int n, int base)
+char		*ft_long_long_itoa_base(unsigned long long int n, int base)
 {
 	char			*res;
 	long long int	nb;
