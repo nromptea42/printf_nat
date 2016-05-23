@@ -5,9 +5,9 @@ int		main(void)
 {
 	int	i;
 
-	i = ft_printf("|%       d|\n", 123);
+	i = ft_printf("|% c|\n", 'T');
 	printf("%d\n", i);
-	i = printf("|%       d|\n", 123);
+	i = printf("|% c|\n", 'T');
 	printf("%d\n", i);
 	return (0);
 }

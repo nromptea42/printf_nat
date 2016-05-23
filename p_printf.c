@@ -1,7 +1,5 @@
 #include <ft_printf.h>
 
-#include <stdio.h>
-
 char			*make_precision(char *str, t_printf *p, int len, bool should_free)
 {
 	char	*tmp;
@@ -39,6 +37,25 @@ char			*make_precision(char *str, t_printf *p, int len, bool should_free)
 	}
 }
 
+char			*plus_space(char *str, bool should_free)
+{
+	int		len;
+	char	*tmp;
+	char	*new;
+
+	should_free += 0;
+	len = ft_strlen(str);
+	new = ft_strnew(len + 1);
+	tmp = new;
+	*tmp = ' ';
+	tmp++;
+	tmp = ft_strcpy(tmp, str);
+	if (should_free == true)
+		ft_strdel(&str);
+	str = new;
+	return (str);
+}
+
 void			flush(char *str, t_printf *p, bool should_free)
 {
 	int		len;
@@ -47,6 +64,8 @@ void			flush(char *str, t_printf *p, bool should_free)
 	int		i;
 
 	i = 0;
+	if (p->flags.space == true && p->converter != 'c')
+		str = plus_space(str, should_free);
 	len = ft_strlen(str);
 	if (isConverter(p->converter))
 	{
