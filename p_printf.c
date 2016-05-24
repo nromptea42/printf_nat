@@ -62,13 +62,17 @@ void			flush(char *str, t_printf *p, bool should_free)
 	char	*tmp;
 	char	*tmp2;
 	int		i;
+	char	c;
 
 	i = 0;
-	if (p->flags.space == true && p->converter != 'c')
+	c = ' ';
+	if (p->flags.space == true && p->converter != 'c' && p->converter != '%')
 		str = plus_space(str, should_free);
 	len = ft_strlen(str);
 	if (isConverter(p->converter))
 	{
+		if (p->flags.zero == true && p->precision == -1)
+			c = '0';
 		if (p->precision != -1)
 			str = make_precision(str, p, len, should_free);
 		len = ft_strlen(str);
@@ -78,7 +82,7 @@ void			flush(char *str, t_printf *p, bool should_free)
 			tmp = tmp2;
 			while (i < p->width - len)
 			{
-				*tmp = ' ';
+				*tmp = c;
 				tmp++;
 				i++;
 			}
