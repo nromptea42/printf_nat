@@ -66,7 +66,13 @@ void			flush(char *str, t_printf *p, bool should_free)
 
 	i = 0;
 	c = ' ';
-	if (p->flags.space == true && p->converter != 'c' && p->converter != '%')
+	if (p->flags.space == true && p->flags.zero == true)
+	{
+		p->ret++;
+		ft_putchar(' ');
+		p->width--;
+	}
+	else if (p->flags.space == true && p->converter != 'c' && p->converter != '%')
 		str = plus_space(str, should_free);
 	len = ft_strlen(str);
 	if (isConverter(p->converter))
