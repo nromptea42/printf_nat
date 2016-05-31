@@ -37,25 +37,6 @@ char			*make_precision(char *str, t_printf *p, int len, bool should_free)
 	}
 }
 
-char			*plus_space(char *str, bool should_free)
-{
-	int		len;
-	char	*tmp;
-	char	*new;
-
-	should_free += 0;
-	len = ft_strlen(str);
-	new = ft_strnew(len + 1);
-	tmp = new;
-	*tmp = ' ';
-	tmp++;
-	tmp = ft_strcpy(tmp, str);
-	if (should_free == true)
-		ft_strdel(&str);
-	str = new;
-	return (str);
-}
-
 void			flush(char *str, t_printf *p, bool should_free)
 {
 	int		len;
@@ -66,36 +47,48 @@ void			flush(char *str, t_printf *p, bool should_free)
 
 	i = 0;
 	c = ' ';
-	if (p->flags.space == true && p->flags.zero == true)
-	{
-		p->ret++;
-		ft_putchar(' ');
-		p->width--;
-	}
-	else if (p->flags.space == true && p->converter != 'c' && p->converter != '%')
-		str = plus_space(str, should_free);
 	len = ft_strlen(str);
 	if (isConverter(p->converter))
 	{
-		if (p->flags.zero == true && p->precision == -1)
+		if (p->flags.zero == true && p->precision == -1 && p->flags.moins == false)
 			c = '0';
-		if (p->precision != -1)
+		if (p->flags.space == true && p->converter != 'c' && p->converter != '%' && str[0] != '-')
+		{
+			p->ret++;
+			ft_putchar(' ');
+			p->width--;
+		}
+		if (p->precision != -1 && p->converter != '%')
 			str = make_precision(str, p, len, should_free);
 		len = ft_strlen(str);
 		if (p->width > len)
 		{
-			tmp2 = ft_strnew(p->width);
-			tmp = tmp2;
-			while (i < p->width - len)
+			if (p->flags.moins == false)
 			{
-				*tmp = c;
-				tmp++;
-				i++;
+				tmp2 = ft_strnew(p->width);
+				tmp = tmp2;
+				while (i < p->width - len)
+				{
+					*tmp = c;
+					tmp++;
+					i++;
+				}
+				tmp = ft_strcpy(tmp, str);
+				ft_putstr(tmp2);
+				ft_strdel(&tmp2);
+				p->ret += p->width;
 			}
-			tmp = ft_strcpy(tmp, str);
-			ft_putstr(tmp2);
-			ft_strdel(&tmp2);
-			p->ret += p->width;
+			else
+			{
+				i = len;
+				ft_putstr(str);
+				while (i < p->width)
+				{
+					ft_putchar(' ');
+					i++;
+				}
+				p->ret += p->width;
+			}
 		}
 		else if (p->converter == 'c')
 		{

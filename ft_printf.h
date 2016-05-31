@@ -6,7 +6,7 @@
 /*   By: nromptea <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/11 15:50:43 by nromptea          #+#    #+#             */
-/*   Updated: 2016/05/19 21:33:32 by nromptea         ###   ########.fr       */
+/*   Updated: 2016/05/31 16:05:02 by nromptea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,16 +70,16 @@ char				*process(char *str, t_printf *p);
 **	parse.c
 */
 
-bool					isConverter(char c);
+bool				isConverter(char c);
 int					parse(char *str, t_printf *p);
 
 /*
 **	get_things.c
 */
 
-int			get_width(char *str, t_printf *p);
-int			get_precision(char *str, t_printf *p);
-int			get_modifier(char *str, t_printf *p);
-int			get_flags(char *str, t_printf *p);
+int					get_width(char *str, t_printf *p);
+int					get_precision(char *str, t_printf *p);
+int					get_modifier(char *str, t_printf *p);
+int					get_flags(char *str, t_printf *p);
 
 #endif
