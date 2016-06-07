@@ -100,6 +100,8 @@ char			*process(char *str, t_printf *p)
 		flush("%", p, false);
 	else if (p->converter == 'c' || p->converter == 'C')
 			flush(ft_memset(ft_strnew(2), va_arg(p->ap, int), 1), p , true);
+	else if (p->converter == 'p')
+		flush(ft_lower_str(ft_long_long_itoa_base(va_arg(p->ap, unsigned long long), 16)), p, true);
 	else
 	{
 		block_size = 0;
