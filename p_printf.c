@@ -70,6 +70,8 @@ char			*make_diese(char *str, bool should_free, t_printf *p)
 		str = add_zero(str, should_free, false, p);
 	else if ((p->converter == 'x' || p->converter == 'X') && str[0] != '0')
 		str = add_zero(str, should_free, true, p);
+	else if ((p->converter == 'x' || p->converter == 'X') && str[0] == '0' && p->precision != -1)
+		str[0] = '\0';
 	return (str);
 }
 
@@ -133,14 +135,16 @@ void			flush(char *str, t_printf *p, bool should_free)
 	char	c;
 	bool	check;
 	bool	check2;
+	bool	check3;
 
 	i = 0;
 	c = ' ';
 	check = false;
 	check2 = false;
+	check3 = false;
 	if (str == NULL)
 	{
-		ft_putstr("(null)");
+		ft_putstr("(null)"); //bite precision null
 		p->ret += 6;
 		init_struct(p);
 	}
@@ -148,6 +152,8 @@ void			flush(char *str, t_printf *p, bool should_free)
 		len = ft_strlen(str);
 	if (isConverter(p->converter))
 	{
+		if (str[0] == '0' && p->precision == 0 && p->flags.diese == false)
+			str[0] = '\0';
 		if (p->converter == 'p')
 		{
 			str = add_zero(str, should_free, true, p);

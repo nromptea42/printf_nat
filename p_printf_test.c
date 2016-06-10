@@ -5,9 +5,9 @@ int		main(void)
 {
 	int	i;
 
-	i = ft_printf("|%05.2d|\n", -1);
+	i = ft_printf("%.5c", 0);
 	printf("%d\n", i);
-	i = printf("|%05.2d|\n", -1);
+	i = printf("%.5c", 0);
 	printf("%d\n", i);
 	return (0);
 }

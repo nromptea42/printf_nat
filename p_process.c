@@ -17,9 +17,11 @@ char			*process(char *str, t_printf *p)
 		flush((char *)va_arg(p->ap, wchar_t *), p, false);
 	else if (p->converter == 'd' || p->converter == 'i')
 	{
-		//	if (p->mods.h == 1)
-		//		flush(ft_long_long_itoa_base(va_arg(p->ap, short int), 10), p, true);
-		if (p->mods.l == 1)
+		if (p->mods.h == 1)
+			flush(ft_long_long_itoa_base((short)va_arg(p->ap, int), 10), p, true);
+		else if (p->mods.hh == 1)
+			flush(ft_long_long_itoa_base((signed char)va_arg(p->ap, int), 10), p, true);
+		else if (p->mods.l == 1)
 			flush(ft_long_long_itoa_base(va_arg(p->ap, long int), 10), p, true);
 		else if (p->mods.ll == 1)	
 			flush(ft_long_long_itoa_base(va_arg(p->ap, long long int), 10), p, true);
@@ -34,9 +36,11 @@ char			*process(char *str, t_printf *p)
 		flush(ft_long_long_itoa_base(va_arg(p->ap, long int), 10), p, true);
 	else if (p->converter == 'u')
 	{
-		//	if (p->mods.h == 1)
-		//		flush(ft_long_long_itoa_base(va_arg(p->ap, unsigned short int), 10), p, true);
-		if (p->mods.l == 1)
+		if (p->mods.h == 1)
+			flush(ft_long_long_itoa_base((unsigned short)va_arg(p->ap, int), 10), p, true);
+		else if (p->mods.hh == 1)
+			flush(ft_long_long_itoa_base((unsigned char)va_arg(p->ap, int), 10), p, true);
+		else if (p->mods.l == 1)
 			flush(ft_long_long_itoa_base(va_arg(p->ap, unsigned long int), 10), p, true);
 		else if (p->mods.ll == 1)	
 			flush(ft_long_long_itoa_base(va_arg(p->ap, unsigned long long int), 10), p, true);
@@ -51,9 +55,11 @@ char			*process(char *str, t_printf *p)
 		flush(ft_long_long_itoa_base(va_arg(p->ap, unsigned long int), 10), p, true);
 	else if (p->converter == 'X')
 	{
-		//	if (p->mods.h == 1)
-		//		flush(ft_long_long_itoa_base(va_arg(p->ap, unsigned short int), 16), p, true);
-		if (p->mods.l == 1)
+		if (p->mods.h == 1)
+			flush(ft_long_long_itoa_base((unsigned short)va_arg(p->ap, int), 16), p, true);
+		else if (p->mods.hh == 1)
+			flush(ft_long_long_itoa_base((unsigned char)va_arg(p->ap, int), 16), p, true);
+		else if (p->mods.l == 1)
 			flush(ft_long_long_itoa_base(va_arg(p->ap, unsigned long int), 16), p, true);
 		else if (p->mods.ll == 1)	
 			flush(ft_long_long_itoa_base(va_arg(p->ap, unsigned long long int), 16), p, true);
@@ -66,9 +72,11 @@ char			*process(char *str, t_printf *p)
 	}
 	else if (p->converter == 'x')
 	{	
-		//	if (p->mods.h == 1)
-		//		flush(ft_long_long_itoa_base(va_arg(p->ap, unsigned short int), 16), p, true);
-		if (p->mods.l == 1)
+		if (p->mods.h == 1)
+			flush(ft_lower_str(ft_long_long_itoa_base((unsigned short)va_arg(p->ap, int), 16)), p, true);
+		else if (p->mods.hh == 1)
+			flush(ft_lower_str(ft_long_long_itoa_base((unsigned char)va_arg(p->ap, int), 16)), p, true);
+		else if (p->mods.l == 1)
 			flush(ft_lower_str(ft_long_long_itoa_base(va_arg(p->ap, unsigned long int), 16)), p, true);
 		else if (p->mods.ll == 1)	
 			flush(ft_lower_str(ft_long_long_itoa_base(va_arg(p->ap, unsigned long long int), 16)), p, true);
@@ -83,9 +91,11 @@ char			*process(char *str, t_printf *p)
 		flush(ft_long_long_itoa_base(va_arg(p->ap, unsigned long int), 8), p, true);
 	else if (p->converter == 'o')
 	{
-		//	if (p->mods.h == 1)
-		//		flush(ft_long_long_itoa_base(va_arg(p->ap, unsigned short int), 8), p, true);
-		if (p->mods.l == 1)
+		if (p->mods.h == 1)
+			flush(ft_long_long_itoa_base((unsigned short)va_arg(p->ap, int), 8), p, true);
+		else if (p->mods.hh == 1)
+			flush(ft_long_long_itoa_base((unsigned char)va_arg(p->ap, int), 8), p, true);
+		else if (p->mods.l == 1)
 			flush(ft_lower_str(ft_long_long_itoa_base(va_arg(p->ap, unsigned long int), 8)), p, true);
 		else if (p->mods.ll == 1)	
 			flush(ft_lower_str(ft_long_long_itoa_base(va_arg(p->ap, unsigned long long int), 8)), p, true);
